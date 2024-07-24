@@ -66,3 +66,135 @@ console.log(user);
 console.log(user.name);
 
 // user.job programador //
+
+// any //
+let a:any =0
+
+a="teste"
+a="true"
+a=[]
+
+// union type//
+let id :string |number
+
+// id =true
+// id =[]
+
+//type aliais//
+type myidTyepe =number | string
+
+const userID :myidTyepe=10;
+const production: myidTyepe ="00001";
+const shiID=123;
+
+// enum //
+// tamanho de roupas (size:,Médio,size:pequeno)
+enum SIZE{
+    P= "Pequeno",
+    M= "Médio",
+    G= "grande",
+}
+
+const Camisa = {
+    name: "camisa de gola V",
+    size: SIZE.G
+}
+
+console.log(Camisa);
+
+// literal types//
+let teste: "autenticado"|null;
+
+// teste ="outrovalor"
+teste ="autenticado";
+teste=null;
+
+// funcoes //
+function sum(a:number, b:number) {
+    return a+b
+}
+
+console.log(sum(12, 12));
+//console.log(sum("12", true));
+
+function sayHelloTo(name:string):String{
+    return 'Hello  ${name}';
+}
+
+console.log(sayHelloTo("Beatriz"));
+
+function logger(msg:string): void{
+    console.log(msg);
+}
+
+logger ("teste!");
+
+function greeting (name: string,greet?:string){
+   if(greet){
+    console.log('Olá ${greet} ${name}')
+   }
+    console.log('Olá ${name}')
+}
+
+greeting("Beatriz");
+greeting("Gabriel, Beatriz");
+
+//interfaces //
+interface MathyFunctionParams{
+    n1:number,
+    n2:number
+}
+
+function sumNumbers(nums:MathyFunctionParams){
+    return nums.n1 + nums.n2
+}
+
+console.log(sumNumbers({n1:1, n2:2}));
+
+function multiplyNumber(nums: MathyFunctionParams){
+    return nums.n1 * nums.n2
+}
+
+console.log(multiplyNumber);
+
+// narrowing//
+//checagem tipos//
+function doSomethings(info: number |boolean){
+    if(typeof info ==="number"){
+        console.log('O número é  ${info}')
+        return
+    }
+    console.log("Não foi passado número");
+}
+
+doSomethings(5);
+doSomethings(true);
+
+// generics//
+function shoWArraysItems<T>(arr: T[]) {
+    arr.forEach((item)=> {
+    console.log('ITEM: $(item)')
+    })
+}
+
+const a1 = [1,2,3];
+const a2 = ["a","b","c"];
+
+shoWArraysItems(a1);
+shoWArraysItems(a2);
+
+//classes//
+class USER{
+    name
+    role
+    isApproved
+
+    constructor(name:string,role:string,isApproved:Boolean){
+        this.name =name
+        this.role =role
+        this.isApproved =isApproved
+    }
+}
+const  zeca = new USER ("Zéca","Adim",true);
+
+console.log(zeca);
